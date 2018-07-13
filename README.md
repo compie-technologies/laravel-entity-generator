@@ -52,7 +52,6 @@ Then add the service providers to the providers array in config/app.php :
 If you want to use the facade, add this to your facades in app.php:
 
 ```php
-
 'aliases' => [
 
     'ExampleFacade' => App\Services\Example\ExampleFacade::class,
