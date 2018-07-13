@@ -1,4 +1,4 @@
-# Laravel Entity Generator
+# Laravel Entity Generator - SOA [https://en.wikipedia.org/wiki/Service-oriented_architecture]
 
 [![Build Status](https://travis-ci.org/ybaruchel/laravel-entity-generator.svg?branch=master)](https://travis-ci.org/ybaruchel/laravel-entity-generator)
 [![Latest Stable Version](https://poser.pugx.org/ybaruchel/laravel-entity-generator/version.png)](https://packagist.org/packages/ybaruchel/laravel-entity-generator)
