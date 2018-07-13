@@ -19,3 +19,22 @@ composer require ybaruchel/laravel-entity-generator
 ```
 php artisan make:entity Post
 ```
+
+Then add the service providers to the providers array in config/app.php :
+
+```
+'providers' => [
+
+    App\Repositories\Post\PostRepositoryServiceProvider::class,
+    App\Services\Post\PostServiceServiceProvider::class,
+```
+
+If you want to use the facade, add this to your facades in app.php:
+
+```
+
+'aliases' => [
+
+    'PostFacade' => App\Services\Post\PostFacade::class,
+
+```
