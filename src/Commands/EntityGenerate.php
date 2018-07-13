@@ -52,7 +52,7 @@ class EntityGenerate extends Command
 		$model = Str::studly(class_basename($this->argument('name')));
 
 		$this->call('make:model', [
-			'name' => 'Entities/' . $model,
+			'name' => 'Models/Entities/' . $model,
 		]);
 
 		$this->info($repositoryGenerator->handle($this->argument('name')));

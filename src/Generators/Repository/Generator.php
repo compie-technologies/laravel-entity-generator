@@ -32,7 +32,7 @@ class Generator extends BaseGenerator
 		$name = Str::replaceFirst($this->rootNamespace(), '', $name);
 		$name = str_replace('\\', '/', $name);
 
-		$basePath = $this->laravel['path'].'/Repositories/'.$name.'/';
+		$basePath = $this->laravel['path'].'/Models/Entities/Repositories/'.$name.'/';
 
 		return [
 			'repository' => $basePath.$name.'Repository.php',
