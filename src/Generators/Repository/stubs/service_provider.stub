@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Dummy;
+namespace App\Models\Entities\Repositories\Dummy;
 
-use App\Entities\Dummy;
+use App\Models\Entities\Dummy;
 use Illuminate\Support\ServiceProvider;
 
 class DummyRepositoryServiceProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Dummy;
+namespace App\Models\Entities\Services\Dummy;
 
 use Illuminate\Support\ServiceProvider;
 
