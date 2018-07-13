@@ -22,7 +22,7 @@ php artisan make:entity Post
 
 Then add the service providers to the providers array in config/app.php :
 
-```
+```php
 'providers' => [
 
     App\Repositories\Post\PostRepositoryServiceProvider::class,
@@ -31,7 +31,7 @@ Then add the service providers to the providers array in config/app.php :
 
 If you want to use the facade, add this to your facades in app.php:
 
-```
+```php
 
 'aliases' => [
 
