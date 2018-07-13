@@ -14,3 +14,8 @@
 ```php
 composer require ybaruchel/laravel-entity-generator
 ```
+
+## Example
+```
+php artisan make:entity Post
+```
