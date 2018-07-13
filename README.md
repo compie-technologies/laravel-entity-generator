@@ -1,4 +1,4 @@
-# Laravel Entity Generator - SOA [https://en.wikipedia.org/wiki/Service-oriented_architecture]
+# Laravel Entity Generator - SOA
 
 [![Build Status](https://travis-ci.org/ybaruchel/laravel-entity-generator.svg?branch=master)](https://travis-ci.org/ybaruchel/laravel-entity-generator)
 [![Latest Stable Version](https://poser.pugx.org/ybaruchel/laravel-entity-generator/version.png)](https://packagist.org/packages/ybaruchel/laravel-entity-generator)
@@ -8,6 +8,8 @@
 ========
 
 **Laravel Entity Generator**
+
+Laravel 5.5 repository design pattern generator with SOA(Service Oriented Arcitecture) inspired from this blog post: http://dfg.gd/blog/decoupling-your-code-in-laravel-using-repositiories-and-services.
 
 ## Installation
 
