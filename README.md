@@ -17,9 +17,27 @@ Laravel 5.5 repository design pattern generator with SOA(Service Oriented Arcite
 composer require ybaruchel/laravel-entity-generator
 ```
 
-## Example
+## Usage
 ```
-php artisan make:entity Post
+php artisan make:entity Example
+```
+
+It will generate the following structure by default configuration:
+
+```
+app
+└── Entities
+    |   └── Example.php
+    ├── Repositories
+    |   └── Example
+    |       ├── ExampleRepository.php
+    |       ├── ExampleRepositoryServiceProvider.php
+    |       └── ExampleInterface.php
+    └── Services
+        └── Example
+            ├── ExampleFacade.php
+            ├── ExampleService.php
+            └── ExampleServiceServiceProvider.php
 ```
 
 Then add the service providers to the providers array in config/app.php :
@@ -27,8 +45,8 @@ Then add the service providers to the providers array in config/app.php :
 ```php
 'providers' => [
 
-    App\Repositories\Post\PostRepositoryServiceProvider::class,
-    App\Services\Post\PostServiceServiceProvider::class,
+    App\Repositories\Example\ExampleRepositoryServiceProvider::class,
+    App\Services\Example\ExampleServiceServiceProvider::class,
 ```
 
 If you want to use the facade, add this to your facades in app.php:
@@ -37,6 +55,6 @@ If you want to use the facade, add this to your facades in app.php:
 
 'aliases' => [
 
-    'PostFacade' => App\Services\Post\PostFacade::class,
+    'ExampleFacade' => App\Services\Example\ExampleFacade::class,
 
 ```
