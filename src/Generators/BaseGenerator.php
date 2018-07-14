@@ -36,7 +36,7 @@ class BaseGenerator
 		// to create the class and overwrite the user's code. So, we will bail out so the
 		// code is untouched. Otherwise, we will continue generating this class' files.
 		if ($this->alreadyExists($this->getNameInput($name))) {
-			return ucfirst($this->type).' already exists!';
+			throw new \Exception(ucfirst($this->type).' already exists!');
 		}
 
 		// Next, we will generate the path to the location where this class' file should get

@@ -55,8 +55,16 @@ class EntityGenerate extends Command
 			'name' => 'Models/Entities/' . $model,
 		]);
 
-		$this->info($repositoryGenerator->handle($this->argument('name')));
+		try {
+			$this->info($repositoryGenerator->handle($this->argument('name')));
+		} catch (\Exception $e) {
+			$this->error($e->getMessage());
+		}
 
-		$this->info($serviceGenerator->handle($this->argument('name')));
+		try {
+			$this->info($serviceGenerator->handle($this->argument('name')));
+		} catch (\Exception $e) {
+			$this->error($e->getMessage());
+		}
 	}
 }
