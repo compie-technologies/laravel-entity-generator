@@ -53,8 +53,3 @@ If you want to use the facade, add this to your facades in app.php:
     'ExampleFacade' => App\Models\Entities\Services\Example\ExampleFacade::class,
 
 ```
-
-## TODO
-- Tests
-- PSR refactor
-- Options
