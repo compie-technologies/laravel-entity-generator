@@ -7,8 +7,15 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 
-abstract class BaseGenerator
+abstract class BaseGenerator implements GeneratorInterface
 {
+	/**
+	 * The type of class being generated.
+	 *
+	 * @var string
+	 */
+	protected $type;
+
 	/**
 	 * The filesystem instance.
 	 *
@@ -17,7 +24,9 @@ abstract class BaseGenerator
 	protected $files;
 
 	/**
-	 * @var Application
+	 * The Laravel application instance.
+	 *
+	 * @var \Illuminate\Contracts\Foundation\Application
 	 */
 	protected $laravel;
 
@@ -27,6 +36,14 @@ abstract class BaseGenerator
 		$this->laravel = $laravel;
 	}
 
+	/**
+	 * Handle entity type generate.
+	 *
+	 * @param $name
+	 * @return string
+	 * @throws FileNotFoundException
+	 * @throws \Exception
+	 */
 	public function handle($name): string
 	{
 		$name = $this->qualifyClass($this->getNameInput($name));

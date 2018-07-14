@@ -9,24 +9,12 @@ use Illuminate\Contracts\Foundation\Application;
 
 class Generator extends BaseGenerator
 {
-	public $type = 'repository';
-
-	public function __construct(Filesystem $files, Application $laravel)
-	{
-		parent::__construct($files, $laravel);
-	}
-
 	/**
-	 * Execute the console command.
+	 * The type of classes being generated.
 	 *
-	 * @param $name
-	 * @return string
-	 * @throws \Exception
+	 * @var string
 	 */
-	public function handle($name): string
-	{
-		return parent::handle($name);
-	}
+	public $type = 'repository';
 
 	/**
 	 * Get the destination classes path.
@@ -42,12 +30,18 @@ class Generator extends BaseGenerator
 		$basePath = $this->laravel['path'].'/Models/Entities/Repositories/'.$name.'/';
 
 		return [
+			'interface' => $basePath.$name.'Interface.php',
 			'repository' => $basePath.$name.'Repository.php',
 			'service_provider' => $basePath.$name.'RepositoryServiceProvider.php',
-			'interface' => $basePath.$name.'Interface.php'
 		];
 	}
 
+	/**
+	 * Returns stub file.
+	 *
+	 * @param $classType
+	 * @return string
+	 */
 	protected function getStub($classType): string
 	{
 		return __DIR__.'/stubs/'.$classType.'.stub';

@@ -4,6 +4,7 @@ namespace Ybaruchel\EntityGenerator\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Ybaruchel\EntityGenerator\Generators\GeneratorInterface;
 use Ybaruchel\EntityGenerator\Generators\Repository\Generator as RepositoryGenerator;
 use Ybaruchel\EntityGenerator\Generators\Service\Generator as ServiceGenerator;
 
@@ -24,23 +25,6 @@ class EntityGenerate extends Command
 	protected $description = 'Create a new Entity';
 
 	/**
-	 * The type of class being generated.
-	 *
-	 * @var string
-	 */
-	protected $type = 'Entity';
-
-	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
-	/**
 	 * Execute the console command.
 	 *
 	 * @param RepositoryGenerator $repositoryGenerator
@@ -49,7 +33,8 @@ class EntityGenerate extends Command
 	 */
 	public function handle(RepositoryGenerator $repositoryGenerator, ServiceGenerator $serviceGenerator)
 	{
-		$model = Str::studly(class_basename($this->argument('name')));
+		$name = $this->argument('name');
+		$model = Str::studly(class_basename($name));
 
 		// Creating model
 		$this->call('make:model', [
@@ -57,15 +42,16 @@ class EntityGenerate extends Command
 		]);
 
 		// Creating repository classes
-		try {
-			$this->info($repositoryGenerator->handle($this->argument('name')));
-		} catch (\Exception $e) {
-			$this->error($e->getMessage());
-		}
+		$this->handleGenerator($repositoryGenerator, $name);
 
 		// Creating service classes
+		$this->handleGenerator($serviceGenerator, $name);
+	}
+
+	public function handleGenerator(GeneratorInterface $generator, $name)
+	{
 		try {
-			$this->info($serviceGenerator->handle($this->argument('name')));
+			$this->info($generator->handle($name));
 		} catch (\Exception $e) {
 			$this->error($e->getMessage());
 		}
