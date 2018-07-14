@@ -2,11 +2,12 @@
 
 namespace Ybaruchel\EntityGenerator\Generators;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 
-class BaseGenerator
+abstract class BaseGenerator
 {
 	/**
 	 * The filesystem instance.
@@ -26,7 +27,7 @@ class BaseGenerator
 		$this->laravel = $laravel;
 	}
 
-	public function handle($name)
+	public function handle($name): string
 	{
 		$name = $this->qualifyClass($this->getNameInput($name));
 
@@ -50,6 +51,22 @@ class BaseGenerator
 
 		return ucwords($this->type).' created successfully.';
 	}
+
+	/**
+	 * Get the stub file for the generator.
+	 *
+	 * @param $classType
+	 * @return string
+	 */
+	abstract protected function getStub($classType): string;
+
+	/**
+	 * Get the destination class path.
+	 *
+	 * @param  string  $name
+	 * @return array
+	 */
+	abstract protected function getPaths($name): array;
 
 	/**
 	 * Get the desired class name from the input.
@@ -135,25 +152,24 @@ class BaseGenerator
 	/**
 	 * Build the directory for the class if necessary.
 	 *
-	 * @param  string  $path
-	 * @return string
+	 * @param  array  $paths
+	 * @return void
 	 */
-	protected function makeDirectory($path)
+	protected function makeDirectory($paths): void
 	{
-		$path = array_wrap($path);
-		$firstPath = reset($path);
+		$paths = array_wrap($paths);
+		$firstPath = reset($paths);
 
 		if (! $this->files->isDirectory(dirname($firstPath))) {
 			$this->files->makeDirectory(dirname($firstPath), 0777, true, true);
 		}
-
-		return $path;
 	}
 
 	/**
 	 * Build the class with the given name.
 	 *
 	 * @param  string $classType
+	 * @param $name
 	 * @return string
 	 * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
 	 */

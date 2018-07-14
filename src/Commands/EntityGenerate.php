@@ -51,16 +51,19 @@ class EntityGenerate extends Command
 	{
 		$model = Str::studly(class_basename($this->argument('name')));
 
+		// Creating model
 		$this->call('make:model', [
 			'name' => 'Models/Entities/' . $model,
 		]);
 
+		// Creating repository classes
 		try {
 			$this->info($repositoryGenerator->handle($this->argument('name')));
 		} catch (\Exception $e) {
 			$this->error($e->getMessage());
 		}
 
+		// Creating service classes
 		try {
 			$this->info($serviceGenerator->handle($this->argument('name')));
 		} catch (\Exception $e) {

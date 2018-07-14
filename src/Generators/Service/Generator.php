@@ -16,7 +16,14 @@ class Generator extends BaseGenerator
 		parent::__construct($files, $laravel);
 	}
 
-	public function handle($name)
+	/**
+	 * Execute the console command.
+	 *
+	 * @param $name
+	 * @return string
+	 * @throws \Exception
+	 */
+	public function handle($name): string
 	{
 		return parent::handle($name);
 	}
@@ -41,7 +48,7 @@ class Generator extends BaseGenerator
 		];
 	}
 
-	protected function getStub($classType)
+	protected function getStub($classType): string
 	{
 		return __DIR__.'/stubs/'.$classType.'.stub';
 	}
