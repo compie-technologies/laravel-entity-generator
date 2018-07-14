@@ -55,5 +55,6 @@ If you want to use the facade, add this to your facades in app.php:
 ```
 
 ## TODO
+- Tests
 - PSR refactor
 - Options
