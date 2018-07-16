@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Entities\Services\Dummy;
+namespace App\Services\Dummy;
 
-use App\Models\Entities\Repositories\Dummy\DummyInterface;
+use App\Repositories\Dummy\DummyInterface;
 
 class DummyService
 {

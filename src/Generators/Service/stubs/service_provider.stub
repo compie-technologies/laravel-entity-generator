@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Entities\Services\Dummy;
+namespace App\Services\Dummy;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -10,7 +10,7 @@ class DummyServiceServiceProvider extends ServiceProvider
     {
         $this->app->bind('dummyService', function($app) {
             return new DummyService(
-                $app->make('Repositories\Dummy\DummyInterface')
+                $app->make('App\Repositories\Dummy\DummyInterface')
             );
         });
     }

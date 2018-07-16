@@ -21,19 +21,20 @@ It will generate the following structure by default configuration:
 
 ```
 app
-└── Models
+└── Repositories
+    ├── Example
+    |  ├── ExampleRepository.php
+    |  ├── ExampleRepositoryServiceProvider.php
+    |  └── ExampleInterface.php
+    Services
+    ├── Example
+    |   ├── ExampleFacade.php
+    |   ├── ExampleService.php
+    |   └── ExampleServiceServiceProvider.php
+    Models
     ├── Entities
     |   └── Example.php
-    ├── Repositories
-    |   └── Example
-    |       ├── ExampleRepository.php
-    |       ├── ExampleRepositoryServiceProvider.php
-    |       └── ExampleInterface.php
-    └── Services
-        └── Example
-            ├── ExampleFacade.php
-            ├── ExampleService.php
-            └── ExampleServiceServiceProvider.php
+    
 ```
 
 Then add the service providers to the providers array in config/app.php :
@@ -41,8 +42,8 @@ Then add the service providers to the providers array in config/app.php :
 ```php
 'providers' => [
 
-    App\Models\Entities\Repositories\Example\ExampleRepositoryServiceProvider::class,
-    App\Models\Entities\Services\Example\ExampleServiceServiceProvider::class,
+    App\Repositories\Example\ExampleRepositoryServiceProvider::class,
+    App\Services\Example\ExampleServiceServiceProvider::class,
 ```
 
 If you want to use the facade, add this to your facades in app.php:
@@ -50,6 +51,6 @@ If you want to use the facade, add this to your facades in app.php:
 ```php
 'aliases' => [
 
-    'ExampleFacade' => App\Models\Entities\Services\Example\ExampleFacade::class,
+    'ExampleFacade' => App\Services\Example\ExampleFacade::class,
 
 ```
