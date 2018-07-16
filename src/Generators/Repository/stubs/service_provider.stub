@@ -9,7 +9,7 @@ class DummyRepositoryServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('Repositories\Dummy\DummyInterface', function($app) {
+        $this->app->bind('App\Models\Entities\Repositories\Dummy\DummyInterface', function($app) {
             return new DummyRepository(new Dummy());
         });
     }
